@@ -1,0 +1,52 @@
+def prim_mst_simple():
+    print("--- Prim's Algorithm---")
+    nodes_input = input("Enter nodes (e.g., 1 2 3 4 5): ").split()
+
+    graph = {node: [] for node in nodes_input}
+    print("Enter edges 'u v weight'. Type 'done' when finished.")
+    while True:                                                                                 entry = input("> ").strip()
+        if not entry.lower() == 'done':                                                             try:
+                u, v, w = entry.split()
+                graph[u].append((int(w), v))
+                graph[v].append((int(w), u))                                                        except ValueError:
+                print("Invalid input!")
+        else:
+            break
+
+    start_node = nodes_input[0]
+    visited = {start_node}
+    mst = []
+    total_cost = 0
+
+    # We store available edges in a normal list
+    candidate_edges = []
+    for weight, neighbor in graph[start_node]:
+        candidate_edges.append((weight, start_node, neighbor))
+
+    print(f"\nStarting at Node: {start_node}")
+
+    # Loop until all nodes are visited
+    while len(visited) < len(nodes_input):
+        # MANUALLY find the minimum weight edge in our list
+        # This replaces the heapq.heappop()
+        min_edge = min(candidate_edges, key=lambda x: x[0])
+        candidate_edges.remove(min_edge)
+
+        weight, u, v = min_edge
+
+        if v not in visited:
+            visited.add(v)
+            mst.append((u, v, weight))
+            total_cost += weight
+            print(f"Added Edge: {u}-{v} (Weight: {weight})")
+
+            # Add new edges from the newly visited node to our list
+            for next_w, neighbor in graph[v]:
+                if neighbor not in visited:
+                    candidate_edges.append((next_w, v, neighbor))
+
+    print(f"\nFinal MST Cost: {total_cost}")
+    return mst
+
+if __name__ == "__main__":
+    prim_mst_simple()
