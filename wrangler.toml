@@ -1,0 +1,7 @@
+name = "memories-backend"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "secret_"
+id = "a21e7a2993bf43dab62d007b65fc9e41"
