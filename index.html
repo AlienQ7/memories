@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
@@ -117,3 +117,185 @@ if (!document.createElement('canvas').getContext) {
 </script>
 </body>
 </html>
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>valentine</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+#gallery-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 240, 245, 0.98);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+.gallery-grid img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.2);
+    border: 3px solid #fff;
+}
+#close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #ff3366;
+    cursor: pointer;
+    text-decoration: none;
+}
+</style>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+<div id="mainDiv">
+    <center>
+        <div id="loveHeart">
+            <canvas id="garden"></canvas>
+            <div id="words">
+                <div id="messages" style="color:#ff3366; font-weight:bold; text-shadow: 2px 2px 4px #ffa6c9;">
+                    Ticking With You
+                    <div id="elapseClock" style="color:#ff6699; text-shadow: 1px 1px 3px #ffccd9;"></div>
+                </div>
+                <div id="loveu" style="color:#ff6699; text-shadow: 1px 1px 2px #ff99cc;">
+                    I LOVE YOU SO MUCH<br/>
+                    <div class="signature" style="color:#ff99cc; font-style:italic;">- Alien</div>
+                </div>
+            </div>
+        </div>
+    </center>
+</div>
+<div id="code">
+    <span class="comments" style="color:#ff3366;">/**</span><br /><br/>
+    <span class="space"></span><span class="comments" style="color:#ff3366;">* THE CODE OF LOVE</span><br />
+    <span class="space"></span><span class="comments" style="color:#ff3366;">*/</span><br />
+    <span style="color:#ff6699; ">To my girl Belu !</span><br />
+    <span style="color:#cc66ff;">Do you remember the day we  first kiss?</span><br />
+    <span class="comments" style="color:#ff66cc;">// The bus, the shy.</span><br />
+
+    <span style="color:#ff9966;">Since that day a spark begun;</span><br />
+    <span class="comments" style="color:#cc66ff;">// Your behaviours, your smile, just the way you are.</span><br />
+
+    <span style="color:#ff9966;">Your everything got imprinted in my heart;</span><br />
+    <span style="color:#ff9966;">As the time went on;</span><br />
+    <span style="color:#ff6699;">Our Bond grew stronger and stronger;</span><br />
+    <span style="color:#ff6699;">Journey from Mistake Police text to Love;</span><br />
+    <span style="color:#ff9966;">We have traveled a long way together;</span><br />
+    <span style="color:#cc66ff;">There have been difficulties ;</span><br />
+    <span class="comments" style="color:#ff66cc;">// And I'm sure there will be more.</span><br />
+    <span style="color:#ff9966;">But with you, every battle is worth, every breath is worth it;</span><br /><br />
+
+    <span style="color:#ff6699;">All I want to say is:</span><br />
+    <span style="color:#ff3366;font-weight:bold;">I will love you forever;</span><br /><br />
+
+    <span style="color:#ff6699;">Now if you want to be my Valentine,<br>touch the heart below</span><br /><br />
+
+    <span id="heartspan">
+       <center> 
+           <a href="javascript:void(0)" id="heartTrigger">
+               <i class="fas fa-heart" id="icon" style="font-size:100px; color:#ff3366;"></i>
+           </a>
+       </center>
+    </span>
+</div>
+
+<div id="gallery-overlay">
+    <a href="javascript:void(0)" id="close-btn" onclick="closeGallery()">&times;</a>
+    <div class="gallery-grid" id="gallery-content"></div>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2023, 3, 21);
+together.setHours(16);
+together.setMinutes(30);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+
+$("#heartTrigger").click(async function() {
+    const pass = prompt("Enter the password:");
+    if (!pass) return;
+
+    try {
+        const response = await fetch('https://your-worker-url.workers.dev/', {
+            method: 'POST',
+            body: JSON.stringify({ password: pass }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            const images = await response.json();
+            const container = $("#gallery-content");
+            container.empty();
+            images.forEach(url => {
+                container.append(`<img src="${url}" />`);
+            });
+            $("#gallery-overlay").fadeIn();
+        } else {
+            alert("Incorrect password.");
+        }
+    } catch (err) {
+        alert("Error connecting to server.");
+    }
+});
+
+function closeGallery() {
+    $("#gallery-overlay").fadeOut();
+}
+</script>
+</body>
+	</html>
+	
