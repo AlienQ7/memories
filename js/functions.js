@@ -170,7 +170,7 @@ $(function () {
 
         try {
             // Replace with your actual Cloudflare Worker URL
-            const response = await fetch('https://your-worker-url.workers.dev/', {
+            const response = await fetch('/get-gallery', {
                 method: 'POST',
                 body: JSON.stringify({ password: pass }),
                 headers: { 'Content-Type': 'application/json' }
