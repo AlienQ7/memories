@@ -270,7 +270,7 @@ $("#heartTrigger").click(async function() {
     if (!pass) return;
 
     try {
-        const response = await fetch('https://your-worker-url.workers.dev/', {
+        const response = await fetch('/get-gallery', {
             method: 'POST',
             body: JSON.stringify({ password: pass }),
             headers: { 'Content-Type': 'application/json' }
